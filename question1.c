@@ -7,16 +7,31 @@
 
 #include <stdio.h>
 
+ //geometric/arithmetic approach
+ int SumDivisbleBy(n, target) {
+ 	int p = target/n;
+ 	return n*(p*(p+1))/2;
+} 
+
 int main() {
 	int i = 0,
-			sum = 0;
+			sum1 = 0,
+			sum2 = 0,	
+			target = 1000;
 
-	for (int i = 0; i < 1000; ++i)
+	//Bruteforcing	
+	for (int i = 0; i < target; ++i)
 	{
 		if ((i % 3 == 0) || (i % 5 == 0)) {
-			sum += i;
+			sum1 += i;
 		}
 	}
 
-	printf("The sum is: %d\n", sum);
+	printf("The sum is: %d\n", sum1);
+
+	sum2 = SumDivisbleBy(3, target -1) + SumDivisbleBy(5, target -1) - SumDivisbleBy(15, target -1);
+
+	printf("The sum is: %d\n", sum2);
 }
+
+
